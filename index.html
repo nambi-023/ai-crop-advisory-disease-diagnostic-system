@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CropCare AI</title><link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head><body>
+<header><b>🌱 CropCare AI</b><span>SIH 2026 Prototype</span></header>
+<main>
+<section class="hero"><small>AI-BASED CROP ADVISORY & DISEASE DIAGNOSTIC SYSTEM</small>
+<h1>Smarter crop care,<br><em>better decisions.</em></h1>
+<p>Upload a leaf image, select a crop and describe a visible symptom to receive a prototype assessment and crop-care advice.</p></section>
+<section class="card"><form method="post" enctype="multipart/form-data">
+<label>Crop</label><select name="crop"><option>Tomato</option><option>Potato</option><option>Rice</option></select>
+<label>Leaf Image</label><input type="file" name="leaf_image" accept="image/*">
+<label>Visible Symptom</label><select name="symptom"><option value="healthy">No major symptom</option><option value="spots">Dark / brown spots</option><option value="yellow">Yellowing leaves</option></select>
+<button>🔍 Analyse Crop</button></form></section>
+{% if result %}<section class="result"><small>DIAGNOSTIC RESULT</small><h2>{{result.title}}</h2><p>{{result.description}}</p><div><b>🌿 Advisory</b><p>{{result.advice}}</p></div><small>Image: {{result.filename}}</small></section>{% endif %}
+<section class="note"><b>Prototype Notice</b><p>The current version uses a small rule-based demonstration. A trained computer-vision model and verified agricultural data will be integrated in the next phase.</p></section>
+</main><footer>SIH 2026 • CropCare AI</footer></body></html>
